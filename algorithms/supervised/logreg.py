@@ -12,7 +12,7 @@ class LogisticRegression:
                  batch_size:int=None):
         self.eta = eta
         self.epochs = epochs # iterations for gd
-        self.batch_size = batch_size
+        self.batch_size = batch_size # for batch gd
         # self.algorithm = algorithm  # to be implemented
         self.beta = None # weights & biases
 
@@ -31,7 +31,7 @@ class LogisticRegression:
         """
         n, m = X.shape # n rows, m cols
         linear_predictions = np.dot(X, self.beta) 
-        predictions_proba = self.sigmoid(linear_predictions) # convert to probabilities using sigmpid function
+        predictions_proba = self.sigmoid(linear_predictions) # convert to probabilities using sigmoid function
         predictions = self._proba_to_label(predictions_proba) # convert pobabilities to binary labels
         mcr_cost = np.sum(predictions != y) / n # percentage of misclassified samples
         return mcr_cost
